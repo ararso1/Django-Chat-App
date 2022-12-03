@@ -7,9 +7,6 @@ one to one chat with their friends.
 
 ## Screenshots
 
-##![image](/Images/search.jpg)
-
-##![image](/Images/chat.jpg)
 
 ## Installation
 
