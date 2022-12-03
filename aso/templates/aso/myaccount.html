@@ -1,0 +1,62 @@
+{% load static %}
+{% include 'aso/navbar.html' %}
+    <section>
+      <style>
+        .row {
+          margin: 20px;
+          
+        }
+        .row .card{
+          margin-bottom: 30px;
+          background-color: antiquewhite;
+        }
+
+      </style>
+        <div class="row">
+            <div class="col"></div>
+    
+            <div class="col-6">
+              <div class="col-8">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                      class="rounded-circle img-fluid" style="width: 150px;">
+                    <h5 class="my-3">Name: {{user.name}}</h5>
+                    <p class="text-muted mb-1">Email: {{user.email}}</p>
+                    <p class="text-muted mb-4">Username: {{user.username}}</p>
+                    <div class="d-flex justify-content-center mb-2">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form4Example3">Message</label>
+                        <textarea name="text" id="" cols="50" rows="5" placeholder="Write whats on your mind"></textarea>
+                      
+                      </div>
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form4Example2">Photo</label>
+                        <input type="file" name="image">
+                      </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Post</button>
+                  </form>
+              </div>
+
+            </div>
+            <div class="col"></div>
+            
+        </div>
+    </section>
+
+
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+    ></script>
+
+</body>
+</html>

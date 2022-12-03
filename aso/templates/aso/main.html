@@ -1,0 +1,48 @@
+{% load static %}
+{% include 'aso/navbar.html' %}
+
+<style>
+    section{
+        align-content: center;
+        width: 100%;
+    }
+    section .card{
+        width: 100%;
+        padding: 20px;
+        margin-left: 45%;
+    }
+    .row .this-h{
+        width: 100%;
+        margin: 1% 1% 1% 25%;
+    }
+</style>
+    <section>
+        <div class="row">
+            <h5 class="this-h">See what your friend's posts </h5>
+            <div class="col-6 mb-4">
+                {% for post in postpage %}
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title">{{post.user.username}}</h5>
+                    <p class="card-text">{{post.text}}</p>
+                    <p class="card-text"><small class="text-muted">posted {{post.posted_date}} ago</small></p>
+                    </div>
+                    {% if post.image %}
+                    <img class="card-img-bottom" src="static{{post.image.url}}" alt="Card image cap">
+                    {% endif %}
+                </div>     
+                {% endfor %}      
+            </div>
+            
+        </div>
+    </section>
+
+
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+></script>
+
+</body>
+</html>

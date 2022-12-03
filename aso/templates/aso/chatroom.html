@@ -1,0 +1,73 @@
+{% extends 'aso/roomchat.html' %}
+{% load static %}
+
+{% block message %}
+<style>
+    section{
+        display: inline;
+        align-items: flex-start;
+    }
+    section .container{
+        width: 80%;
+        display: block;
+        margin-right: 200px;
+    }
+    .darker{
+        background-color: rgb(179, 182, 180);
+    }
+</style>
+<section class="message">
+{% include 'aso/navbar.html' %}
+{% for message in messages %}
+    {% if request.user == message.user %}
+        <div class="container darker">
+            <img src="{% static 'images/user_image.jpg' %}" alt="Avatar" class="right" style="width:100%;">
+            <p>{{message.text}}</p>
+            <span class="time-right">{{message.user.username}}</span>
+            <span class="time-left">{{message.date}}</span>
+        </div>
+    {% else %}
+        <div class="container" style="color: rgb(67, 67, 114);">
+            <img src="{% static 'images/user_image.jpg' %}" alt="Avatar" style="width:100%;">
+            <p>{{message.text}}</p>
+            <span class="time-left">{{message.user.username}}</span>
+            <span class="time-left">{{message.date}}</span>
+        </div>
+    {% endif %}
+{% endfor %}
+
+</section>
+<script>
+function scrolltoend() {
+    $('#board').stop().animate({
+        scrollTop: $('#board')[0].scrollHeight
+    }, 800);
+}
+
+$(function () {
+    setInterval(receive, 1000)
+})
+
+const text = '<div class="container">'
+            + '<img src="{% static 'images/user_image.jpg' %}" alt="Avatar" style="width:100%;">' +
+            '<p>{description}</p>' +
+            '<span class="time-left">{time}</span>' +
+            '</div>'
+
+function receive(){
+    $.get('/api/messages/' + sender_id + '/' + receiver_id, function(data){
+        if(data.length !== 0){
+            for(var i = 0; i < data.length; i++){
+                var field = text.replace('{description}', data[i].description);
+                var time = data[i].time.slice(0, 5) + ' a.m'
+                field = field.replace('{time}', time);
+                $('#board').append(field);
+                scrolltoend();
+            }
+        }
+    })
+}
+
+</script>
+
+{% endblock %}

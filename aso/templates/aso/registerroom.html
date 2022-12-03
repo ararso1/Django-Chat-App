@@ -1,0 +1,38 @@
+{% include 'aso/navbar.html' %}
+
+<style>
+	form{
+		margin: 5% 30%;
+	}
+	form input{
+		width: 100%;
+	}
+</style>
+
+<form method="POST">
+	{% csrf_token %}
+	<!-- Name input -->
+	<div class="form-outline mb-4">
+		<label class="form-label" for="form5Example1">Name</label>
+	  	<input type="text" name="name" required placeholder="Enter group name"/>	  
+	</div>
+  
+	<!-- Email input -->
+	<div class="form-outline mb-4">
+		<label class="form-label">Username</label>
+	  	<input type="name" name="username" required placeholder="Enter group username"/>  
+	</div>
+  
+	<!-- Submit button -->
+	<button type="submit" class="btn btn-primary btn-block mb-4">Create</button>
+  </form>
+
+
+
+    <!-- MDB -->
+	<script
+	type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+	></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "aso/grrooms.html" %}
+{% load static %}
+
+{% block  content %}
+
+        <div style="margin-top: 12px">
+            <h3>{{ friend.name }}</h3>
+        </div>
+        <div class="messages" id="board">
+            {% block message %}
+            {% endblock %}
+        </div>
+        <style>
+            .row .input-group-prepend{
+                margin-right: 20px;
+                width: 95%;
+            }
+
+            
+        </style>
+        <div class="row">
+            <form method="post" class="form-group" id="chat-box">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <input type="text" placeholder="Send a message..." name="message" id="msg_field">
+                        <button type="submit" name="send" class="btn btn-success" id="send_btn">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <script>
+        var messageBody = document.querySelector('.messages');
+        messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+        sender_id = "{{ friend.id }}";
+        receiver_id = "{{ curr_user.id }}";
+
+        function scrolltoend() {
+            $('#board').stop().animate({
+                scrollTop: $('#board')[0].scrollHeight
+            }, 800);
+         }
+
+        const text_box = '<div class="container darker">' +
+            '<img src="{% static 'images/user_image.jpg' %}" alt="Avatar" class="right" style="width:100%;">' +
+            '<p>{description}</p>' +
+            '<span class="time-right">{time}</span>' +
+            '</div>'
+
+        //For sending
+        
+
+    </script>
+
+{% endblock %}

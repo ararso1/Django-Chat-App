@@ -1,0 +1,57 @@
+
+{% include 'aso/navbar.html' %}
+
+<style>
+	.room{
+		float: left;
+		margin-top: 30px;
+		margin: 3%;
+	}
+	.room h4:hover{
+		color: #7fff00;
+	}
+	.room-link{
+		background-color: rgb(155, 173, 189);
+		margin: 20px;
+	}
+	.room-link button{
+		font-size: 23px;
+		display: block;
+	}
+
+</style>
+
+<!-- <div class="room-link">
+	<a href="{% url 'createchatroom' %}">Create Chat Room</a>
+</div> -->
+<div class="room-link d-grid gap-2 col-6 mx-auto">
+	<button class="btn" type="button"><a href="{% url 'createchatroom' %}">Create Chat Room</a></button>
+</div>
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Are you sure you want to delete "{{room.name}}"?</p>
+
+			<form action="{% url 'delete_room' room.username  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'chatrooms' %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+    <!-- MDB -->
+	<script
+	type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
+	></script>
+</body>
+</html>
