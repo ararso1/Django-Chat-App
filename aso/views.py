@@ -100,7 +100,7 @@ def addFriend(request, name):
     id = getUserId(username)
     friend = UserProfile.objects.get(username=name)
     curr_user = UserProfile.objects.get(id=id)
-    print(curr_user.name)
+   
     ls = curr_user.friends_set.all()
     flag = 0
     for username in ls:
@@ -108,7 +108,6 @@ def addFriend(request, name):
             flag = 1
             break
     if flag == 0:
-        print("Friend Added!!")
         curr_user.friends_set.create(friend=friend.id)
         friend.friends_set.create(friend=id)
     return redirect("/search")
@@ -164,7 +163,6 @@ def main(request):
 def myaccount(request):
     user = UserProfile.objects.get(username=request.user.username)
     form = PostPageForm()
-    print(user.name)
     if request.method == "POST":
         form = PostPageForm(request.POST,request.FILES)
         if form.is_valid():
@@ -195,7 +193,6 @@ def chatRoom(request,username):
         if not tg:
             x=False
             
-        print('user',request.user)
         try:
             te=ChatMessage.objects.filter(user=request.user).last().text
         except:
@@ -231,7 +228,6 @@ def create_room(request):
 def chatrooms(request):
     rooms=ChatRoom.objects.order_by('-date')
     x=request.user.groups.all()
-    print(x)
     context={'rooms':rooms}
     return render(request, "aso/rooms_to.html",context)
 
@@ -244,8 +240,7 @@ def inviteuser(request,username):
     
     inviteds = User.objects.filter(groups__name=gr.name)
     uninviteds = User.objects.filter(~Q(groups__name=gr.name)).order_by('-id')
-    print("invited",inviteds)
-    print("uninvited",uninviteds)
+
     if request.method=="POST":
         sear=request.POST.get("search")
         sear=sear.replace("@","")
