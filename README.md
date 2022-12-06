@@ -7,15 +7,11 @@ one to one chat with their friends.
 
 ## Screenshots
 
-![image](/Images/search.jpg)
-
-![image](/Images/chat.jpg)
 
 ## Installation
 
 ```
-pip install django
-pip install django-rest-framework
+pip install requirements.txt
 ```
 
 ## How to use?
