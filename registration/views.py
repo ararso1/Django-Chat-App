@@ -34,5 +34,5 @@ def SignUp(request):
                 return redirect("main")
     else:
         form = SignUpForm()
-    return render(request, "registration/signup.html", {"form": form, "heading": "Sign Up", "message": message})
+    return render(request, "registration/SignUp.html", {"form": form, "heading": "Sign Up", "message": message})
 

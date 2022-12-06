@@ -23,6 +23,7 @@
                 {% for post in postpage %}
                 <div class="card">
                     <div class="card-body">
+                    <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" style="width: 150px;" alt="Avatar" />
                     <h5 class="card-title">{{post.user.username}}</h5>
                     <p class="card-text">{{post.text}}</p>
                     <p class="card-text"><small class="text-muted">posted {{post.posted_date}} ago</small></p>
