@@ -256,6 +256,8 @@ def invited(request,username,chat):
     gr.user_set.add(user)
     return redirect('/invite_user/'+username)
 
+
+@login_required(login_url='login')
 def deleteRoom(request, username):
     room = ChatRoom.objects.get(username=username)
     group = Group.objects.get(name=username)
