@@ -23,4 +23,6 @@ pip install requirements.txt
 python manage.py runserver
 ```
 - It will run the application on your localhost.
+
 - Open the browser with the localhost address and enjoy the application."# Django-Chat-App" 
+                         
